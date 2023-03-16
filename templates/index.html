@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coffee Grind</title>
+  </head>
+  <body>
+    <h1>Coffee Grind</h1>
+    <form method="POST" action="{{ url_for('search') }}">
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" value="Seattle"><br><br>
+      <label for="radius">Radius (meters):</label>
+      <input type="text" id="radius" name="radius" value="4000"><br><br>
+      <label for="price">Price:</label>
+      <select id="price" name="price">
+        <option value="1" selected>$</option>
+        <option value="2"selected>$$</option>
+        <option value="3"selected>$$$</option>
+        <option value="4"selected>$$$$</option>
+      </select><br><br>
+      <label for="rating">Rating:</label>
+      <select id="rating" name="rating">
+        <option value="1" selected>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select><br><br>
+      <label for="hot_and_new">Hot and New:</label>
+      <input type="checkbox" id="hot_and_new" name="hot_and_new" value="true"><br><br>
+      <label for="outdoor_seating">Outdoor Seating:</label>
+      <input type="checkbox" id="outdoor_seating" name="outdoor_seating" value="true"><br><br>
+      <label for="wifi_free">Free Wifi:</label>
+      <input type="checkbox" id="wifi_free" name="wifi_free" value="true"><br><br>
+      <input type="submit" value="Search">
+    </form>
+    {% if businesses %}
+    <h2>Results:</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Rating</th>
+      </tr>
+      {% for business in businesses %}
+      <tr>
+        <td>{{ business['name'] }}</td>
+        <td>{{ business['address'] }}</td>
+        <td>{{ business['rating'] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+  </body>
+</html>
+

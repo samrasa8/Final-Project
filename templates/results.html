@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>We found some shops that you might like!</title>
+</head>
+<body>
+    <h1>We found some shops that you might like!</h1>
+    <ul>
+        {% for business in businesses %}
+        <img src="{{ business['image_url'] }}" class="card-img" ">
+        <li>
+            <h2>{{ business['name'] }}</h2>
+            <p>{{ business['address'] }}</p>
+            <p>Rating: {{ business['rating'] }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
